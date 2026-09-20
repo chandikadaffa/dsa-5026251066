@@ -1,36 +1,29 @@
-import java.io.InputStream;
+package lw01.prelab;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        List<PrintJob> jobs = new ArrayList<>();
+        List<PrintJob> printList = new ArrayList<>();
+        Scanner sc = new Scanner(Main.class.getResourceAsStream("jobs.txt"));
 
-        InputStream input = Main.class.getResourceAsStream("jobs.txt");
+        while(sc.hasNext()) {
+            String type = sc.next();
+            String id = sc.next();
+            int pages = sc.nextInt();
 
-        if (input == null) {
-            System.out.println("File jobs.txt not found");
-            return;
-        }
-
-        try (Scanner scanner = new Scanner(input)) {
-            while (scanner.hasNext()) {
-                String type = scanner.next();     
-                String id = scanner.next();      
-                int pages = scanner.nextInt();   
-
-                if (type.equals("MONO")) {
-                    jobs.add(new MonoPrint(id, pages));
-                } else if (type.equals("COLOUR")) {
-                    jobs.add(new ColourPrint(id, pages));
-                }
+            if(type.equals("MONO")) {
+                printList.add(new MonoPrint(id, pages));
+            }else if(type.equals("COLOUR")) {
+                printList.add(new ColourPrint(id, pages));
             }
         }
+        sc.close();
 
-        for (int i = 0; i < jobs.size(); i++) {
-            PrintJob job = jobs.get(i);
-            System.out.println(job.summary());
+        for(int i = 0; i < printList.size(); i++) {
+            System.out.println(printList.get(i).summary());
         }
     }
 }

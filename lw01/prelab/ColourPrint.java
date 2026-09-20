@@ -1,3 +1,5 @@
+package lw01.prelab;
+
 public class ColourPrint extends PrintJob {
 
     public ColourPrint(String id, int pages) {
@@ -6,16 +8,15 @@ public class ColourPrint extends PrintJob {
 
     @Override
     public int calculateCharge() {
-        int pages = super.getPages();
-        int baseCharge;
+        int pages = getPages();
+        int charge;
 
-        if (pages <= 10) {
-            baseCharge = pages * 1500;
-        } else {
-            baseCharge = (10 * 1500) + ((pages - 10) * 1000);
+        if(pages <= 10) {
+            charge = pages*1500;
+        }else {
+            charge = (10*1500)+((pages-10)*1000);
         }
-
-        return baseCharge + 2000;
+        return charge+2000;
     }
 
     @Override

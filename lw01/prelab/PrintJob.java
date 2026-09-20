@@ -1,9 +1,11 @@
+package lw01.prelab;
+
 public abstract class PrintJob implements Chargeable {
     private String id;
     private int pages;
 
-    protected PrintJob(String id, int pages) {
-        if (pages <= 0) {
+    public PrintJob(String id, int pages) {
+        if(pages <= 0) {
             throw new IllegalArgumentException("Pages must be greater than zero.");
         }
         this.id = id;
@@ -22,10 +24,10 @@ public abstract class PrintJob implements Chargeable {
     public abstract int calculateCharge();
 
     public int calculateCharge(int copies) {
-        if (copies <= 0) {
+        if(copies <= 0) {
             throw new IllegalArgumentException("Copies must be greater than zero.");
         }
-        return copies * calculateCharge();
+        return copies*calculateCharge();
     }
 
     public String label() {
