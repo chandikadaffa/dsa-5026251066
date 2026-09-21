@@ -15,7 +15,7 @@ public class ProjectorRental extends Rental {
         if(days <= 3) {
             charge = (days*60000+20000)*units;
         }else {
-            charge = (3*60000+20000)*units+((days-3)*45000)*units;
+            charge = ((3*60000+20000)+((days-3)*45000))*units;
         }
         return charge;
     }
