@@ -9,6 +9,8 @@ public class Main {
         Scanner input = new Scanner(Main.class.getResourceAsStream("transactions.txt"));
         LinkedList<String[]> transactions = new LinkedList<>();
         LinkedList<String[]> customer = new LinkedList<>(); 
+        Queue<String[]> queue = new LinkedList<>();
+        Stack<String[]> failedTrans= new Stack<>();
 
         while (input.hasNext()) {
             String name = input.next();
@@ -27,12 +29,10 @@ public class Main {
         }
         input.close();
 
-        Queue<String[]> queue = new LinkedList<>();
         for (String[] trans : transactions) {
             queue.add(trans);
         }
 
-        Stack<String[]> failedTrans= new Stack<>();
         while (!queue.isEmpty()) {
             String[] trans = queue.poll();
             String name = trans[0];
