@@ -2,7 +2,6 @@ package lw04.prelab;
 
 import java.util.*;
 public class Main {
-
     public static void main(String[] args) {
         Scanner input = new Scanner(Main.class.getResourceAsStream("branches.txt"));
         int n = input.nextInt();
